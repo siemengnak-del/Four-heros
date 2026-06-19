@@ -1,57 +1,72 @@
 #include <stdio.h>
 #include <math.h>
 
-void solveQuadratic(double a, double b, double c) {
-    double discriminant, root1, root2;
+void clearInputBuffer() {
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF);
+}
 
-    // Check if a is zero
-    if (a == 0) {
-        printf("This is not a quadratic equation.\n");
-        return;
-    }
+void solveQuadratic(double a, double b, double c) {
+    double discriminant;
+    double root1, root2;
 
     discriminant = b * b - 4 * a * c;
+
+    printf("\nDiscriminant = %.2lf\n", discriminant);
 
     if (discriminant > 0) {
         root1 = (-b + sqrt(discriminant)) / (2 * a);
         root2 = (-b - sqrt(discriminant)) / (2 * a);
 
-        printf("Two real roots:\n");
+        printf("Two distinct real roots found:\n");
         printf("x1 = %.2lf\n", root1);
         printf("x2 = %.2lf\n", root2);
     }
     else if (discriminant == 0) {
         root1 = -b / (2 * a);
 
-        printf("One real root:\n");
+        printf("One repeated real root found:\n");
         printf("x = %.2lf\n", root1);
     }
     else {
-        printf("No real roots (complex roots).\n");
+        printf("No real roots exist.\n");
+        printf("The equation has complex roots.\n");
     }
 }
 
 int main() {
-    printf("=== Quadratic Equation Solver ===\n\n");
+    double a, b, c;
+    int validInput = 0;
 
-    // Example 1: Two real roots
-    printf("Example 1: x^2 - 5x + 6 = 0\n");
-    printf("(a=1, b=-5, c=6)\n");
-    solveQuadratic(1, -5, 6);
+    printf("====================================\n");
+    printf("   QUADRATIC EQUATION SOLVER\n");
+    printf("====================================\n");
+    printf("Equation form: ax^2 + bx + c = 0\n\n");
 
-    printf("\n");
+    while (!validInput) {
+        printf("Enter coefficients a, b, and c: ");
 
-    // Example 2: One real root
-    printf("Example 2: x^2 - 2x + 1 = 0\n");
-    printf("(a=1, b=-2, c=1)\n");
-    solveQuadratic(1, -2, 1);
+        if (scanf("%lf %lf %lf", &a, &b, &c) == 3) {
 
-    printf("\n");
+            if (a == 0) {
+                printf("Error: 'a' cannot be 0.\n");
+                printf("This would not be a quadratic equation.\n\n");
+            }
+            else {
+                validInput = 1;
+            }
+        }
+        else {
+            printf("Error: Invalid input.\n");
+            printf("Please enter numeric values only.\n\n");
 
-    // Example 3: No real roots
-    printf("Example 3: x^2 + 1 = 0\n");
-    printf("(a=1, b=0, c=1)\n");
-    solveQuadratic(1, 0, 1);
+            clearInputBuffer();
+        }
+    }
+
+    solveQuadratic(a, b, c);
+
+    printf("\nProgram finished.\n");
 
     return 0;
 }
