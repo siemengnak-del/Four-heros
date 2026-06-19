@@ -9,5 +9,6 @@ int main () {
         printf ("YaYa Gayyy");
     }
     printf ("bruhhhhhhh");
+    printf ("home....AH PLACE WHERE I CAN GO");
     return 0;   
 }
