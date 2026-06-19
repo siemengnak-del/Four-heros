@@ -30,3 +30,28 @@ void solveQuadratic(double a, double b, double c) {
         printf("No real roots (complex roots).\n");
     }
 }
+
+int main() {
+    printf("=== Quadratic Equation Solver ===\n\n");
+
+    // Example 1: Two real roots
+    printf("Example 1: x^2 - 5x + 6 = 0\n");
+    printf("(a=1, b=-5, c=6)\n");
+    solveQuadratic(1, -5, 6);
+
+    printf("\n");
+
+    // Example 2: One real root
+    printf("Example 2: x^2 - 2x + 1 = 0\n");
+    printf("(a=1, b=-2, c=1)\n");
+    solveQuadratic(1, -2, 1);
+
+    printf("\n");
+
+    // Example 3: No real roots
+    printf("Example 3: x^2 + 1 = 0\n");
+    printf("(a=1, b=0, c=1)\n");
+    solveQuadratic(1, 0, 1);
+
+    return 0;
+}
