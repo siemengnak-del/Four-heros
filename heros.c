@@ -8,5 +8,6 @@ int main () {
     if (ahYa == gay) {
         printf ("YaYa Gayyy");
     }
+    printf ("bruhhhhhhh");
     return 0;   
 }
